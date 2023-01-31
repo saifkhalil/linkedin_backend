@@ -7,7 +7,7 @@ charset-normalizer==3.0.1
 coreapi==2.3.3
 coreschema==0.0.4
 defusedxml==0.7.1
-diff-match-patch==20200713
+diff-match-patch
 Django==4.1.5
 django-cors-headers==3.13.0
 django-countries==7.5
