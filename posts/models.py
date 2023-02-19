@@ -1,3 +1,4 @@
+from email.mime import image
 from django.db import models
 from accounts.models import User
 from django.core.validators import FileExtensionValidator
@@ -18,9 +19,23 @@ class documents(models.Model):
 
 
 class post(models.Model):
+    VIDEO = "video"
+    IMAGE = 'img'
+    URL = 'iframe'
+    POST_TYPES =  [
+        (IMAGE, 'img'),
+        (VIDEO, 'video'),
+        (URL, 'iframe'),
+    ]
+
     id = models.AutoField("id",primary_key=True)
     text = models.CharField(verbose_name='Text',null=True,blank=True,max_length=1000)
     documents = models.ManyToManyField(blank=True, related_name='documents', to=documents,verbose_name='Documents')
+    post_type = models.CharField(
+        max_length=6,
+        choices=POST_TYPES,
+        default=URL,
+    )
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
     created_by = models.ForeignKey(

@@ -32,6 +32,6 @@ class PostsSerializer(DynamicFieldsMixin,serializers.ModelSerializer):
     class Meta:
         model = post
 #        list_serializer_class = FilteredListSerializer
-        fields = [ 'id', 'text','documents','created_by','created_at','modified_by','modified_at']
+        fields = [ 'id', 'text','documents','post_type','created_by','created_at','modified_by','modified_at']
         http_method_names = ['get', 'post', 'head','put']
         extra_kwargs = {'created_by': {'required': False},'modified_by': {'required': False},'documents': {'required': False}}
